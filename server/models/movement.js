@@ -69,7 +69,8 @@ const createMovement = ({
     type = MovementType.EXPENSE,
     category = '',
 } = {}) => {
-    date = new Date()
+       
+    //date = new Date()  - Bug/Fecha_Hoy
     return Movement.create({ date, amount, type, category });
 };
 
