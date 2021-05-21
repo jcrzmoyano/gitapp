@@ -79,6 +79,8 @@ window.onSave = async function (e) {
         await movementService.create(movement);
     }
 
+    window.location.reload() //Recarga la URL como si fuera un F5 
+
     state.movement = {};
     render('movement-form.html', state, refs.form);
 };
