@@ -1,6 +1,5 @@
 const express = require('express');
 const paginate = require('express-paginate');
-const { Movement } = require('../models/movement');
 const MovementModel = require('../models/movement');
 const router = express.Router();
 
