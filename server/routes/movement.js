@@ -1,5 +1,6 @@
 const express = require('express');
 const paginate = require('express-paginate');
+const { Movement } = require('../models/movement');
 const MovementModel = require('../models/movement');
 const router = express.Router();
 
@@ -64,5 +65,18 @@ router.put('/:id', function (req, res) {
         })
         .catch(() => res.status(500).send('Error al obtener movimiento'));
 });
+
+/* Endpoint para Eliminar */
+router.delete('/:id', function (req, res) {
+    MovementModel.delete(req.params.id)
+        .then((movement) => {
+            if (movement != null) {
+                res.status(200).send(
+                    'El movimiento ' + req.params.id + '  fue eliminado'
+                );
+            } else res.status(404).send(movement);
+        })
+        .catch(() => res.status(500).send('Error al eliminar movimiento'));
+}); 
 
 module.exports = router;
