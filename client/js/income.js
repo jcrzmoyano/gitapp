@@ -76,7 +76,7 @@ window.onSave = async function (e) {
         alert('Debe ingresar un monto mayor a 0');
     }
     else{
-        
+
     e.stopPropagation();
     e.preventDefault();
     const movement = getMovementData();
@@ -92,5 +92,5 @@ window.onSave = async function (e) {
     state.movement = {};
     render('movement-form.html', state, refs.form);
 };
-
+};
 init();

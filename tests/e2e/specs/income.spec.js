@@ -44,5 +44,20 @@ describe('Ingresos Test', () => {
           })     
     });
 
+    it('Deberia rechazar el ingreso de montos negativos', (done) => {
+
+        cy.visit('/income');
+        cy.get('input[name=date]').type('2021-02-10');
+        cy.get('input[name=category]').type('Regalo');
+        cy.get('input[name=amount]').type('-500');
+        cy.contains('Guardar').click();
+
+        cy.on('window:alert', (str) => {
+        expect(str).to.equal('Debe ingresar un monto mayor a 0');
+
+    done();
+        });
+
+    });
 
 });
