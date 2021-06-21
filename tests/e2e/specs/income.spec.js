@@ -43,6 +43,7 @@ describe('Ingresos Test', () => {
             done();
           })     
     });
+	
     it('Los movimientos deben tener la clase que asigna el signo +', () => {
         cy.visit('/income');
         //Se crea un movimiento para verificar el funcionamiento
@@ -52,7 +53,6 @@ describe('Ingresos Test', () => {
         cy.get('input[name=amount]').type('11000');
         cy.contains('Guardar').click();
 
-       
     });
 
 });
