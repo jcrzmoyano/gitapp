@@ -53,6 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Incomes UI with last incomes
 
 [unreleased]: https://github.com/jcrzmoyano/gitapp/compare/v1.1.0...HEAD
+[1.2.0]: https://github.com/jcrzmoyano/gitapp/releases/tag/v1.2.0
 [1.1.0]: https://github.com/jcrzmoyano/gitapp/releases/tag/v1.1.0
 [1.0.1]: https://github.com/jcrzmoyano/gitapp/releases/tag/v1.0.1
 [1.0.0]: https://github.com/jcrzmoyano/gitapp/releases/tag/v1.0.0
