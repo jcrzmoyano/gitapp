@@ -43,6 +43,21 @@ describe('Ingresos Test', () => {
             done();
           })     
     });
+  
+  it('Deberia rechazar el ingreso de montos negativos', (done) => {
+
+        cy.visit('/income');
+        cy.get('input[name=date]').type('2021-02-10');
+        cy.get('input[name=category]').type('Regalo');
+        cy.get('input[name=amount]').type('-500');
+        cy.contains('Guardar').click();
+
+        cy.on('window:alert', (str) => {
+        expect(str).to.equal('Debe ingresar un monto mayor a 0');
+
+    done();
+        });
+    
     it('Los movimientos deben tener la clase que asigna el signo +', () => {
         cy.visit('/income');
         //Se crea un movimiento para verificar el funcionamiento
@@ -55,6 +70,7 @@ describe('Ingresos Test', () => {
         cy.get('p[id=valor]')
             .contains('10.000')
             .should('have.class', 'ingreso')
+
     });
 
 });
