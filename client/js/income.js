@@ -69,6 +69,14 @@ window.onRemove = async function () {
  * Guarda un movimiento
  **/
 window.onSave = async function (e) {
+
+    const monto = document.querySelector('#monto');
+
+    if (monto.value<0){
+        alert('Debe ingresar un monto mayor a 0');
+    }
+    else{
+
     e.stopPropagation();
     e.preventDefault();
     const movement = getMovementData();
@@ -83,6 +91,6 @@ window.onSave = async function (e) {
 
     state.movement = {};
     render('movement-form.html', state, refs.form);
+}
 };
-
 init();

@@ -28,6 +28,7 @@ describe('Ingresos Test', () => {
 
         cy.get('[data-testid=movement]').should('have.length', 5);
     });
+
     it('Carga de monto con decimales', () => {
         cy.visit('/income');
         cy.get('input[name="description"]').type('Test Deberia cargar monto con decimales');
@@ -38,6 +39,36 @@ describe('Ingresos Test', () => {
         cy.reload();
 
         cy.get(':nth-child(5) > [data-testid=movement] > .level-right > :nth-child(1) > .has-text-success').should('include.text', '1.234,56')
+    });
+  
+    it('Deberia mostrar una alerta de movimiento creado', (done) => {
+        cy.visit('/income');
+        cy.get('input[name=date]').type('2021-05-06');
+        cy.get('input[name=amount]').type('2500');
+        cy.get('input[name=category]').type('Compras');
+
+
+        cy.contains('Guardar').click();
+        cy.on('window:alert', (str) => {
+            expect(str).to.equal('Movimiento creado correctamente');
+            done();
+          })     
+    });
+
+    it('Deberia rechazar el ingreso de montos negativos', (done) => {
+
+        cy.visit('/income');
+        cy.get('input[name=date]').type('2021-02-10');
+        cy.get('input[name=category]').type('Regalo');
+        cy.get('input[name=amount]').type('-500');
+        cy.contains('Guardar').click();
+
+        cy.on('window:alert', (str) => {
+        expect(str).to.equal('Debe ingresar un monto mayor a 0');
+
+    done();
+        });
+
     });
 });
 
