@@ -43,6 +43,18 @@ describe('Ingresos Test', () => {
             done();
           })     
     });
+    it('Los movimientos deben tener la clase que asigna el signo +', () => {
+        cy.visit('/income');
+        //Se crea un movimiento para verificar el funcionamiento
+        cy.get('input[name=description]').type('Suscripcion Mensual');
+        cy.get('input[name=date]').type('2021-05-14');
+        cy.get('input[name=category]').type('Bono');
+        cy.get('input[name=amount]').type('11000');
+        cy.contains('Guardar').click();
 
+        cy.get('p[id=valor]')
+            .contains('10.000')
+            .should('have.class', 'ingreso')
+    });
 
 });
