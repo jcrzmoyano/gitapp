@@ -54,21 +54,17 @@ describe('Ingresos Test', () => {
             done();
           })     
     });
-
-    it('Deberia rechazar el ingreso de montos negativos', (done) => {
-
+	
+    it('Los movimientos deben tener la clase que asigna el signo +', () => {
         cy.visit('/income');
-        cy.get('input[name=date]').type('2021-02-10');
-        cy.get('input[name=category]').type('Regalo');
-        cy.get('input[name=amount]').type('-500');
+        //Se crea un movimiento para verificar el funcionamiento
+        cy.get('input[name=description]').type('Suscripcion Mensual');
+        cy.get('input[name=date]').type('2021-05-14');
+        cy.get('input[name=category]').type('Bono');
+        cy.get('input[name=amount]').type('11000');
         cy.contains('Guardar').click();
 
-        cy.on('window:alert', (str) => {
-        expect(str).to.equal('Debe ingresar un monto mayor a 0');
-
-    done();
-        });
-
     });
+
 });
 
