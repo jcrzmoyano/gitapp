@@ -77,7 +77,7 @@ it('Verifica que el ingreso tenga el signo +', () => {
     cy.get('input[name=description]').type('Produccion Multimedial');
     cy.get('input[name=date]').type('2021-02-12');
     cy.get('input[name=category]').type('Pago');
-    cy.get('input[name=amount]').type('15000');
+    cy.get('input[name=amount]').type('10000');
     cy.contains('Guardar').click();
 
     cy.get('p[id=valor]')
